@@ -1,0 +1,28 @@
+@keyframes card-hover {
+    0% {
+        transform: scale(1);
+        border: 3px solid skyblue;
+        filter: drop-shadow(5px 7px 20px rgba(#185c66, 0.75));
+    }
+
+    50% {
+        transform: scale(1.02);
+        border: 3px solid skyblue;
+        filter: drop-shadow(5px 7px 20px rgba(#185c66, 0.75));
+    }
+
+    75% {
+        border: 3px solid skyblue;
+        filter: drop-shadow(5px 7px 5px rgba(#185c66, 0.5));
+    }
+
+    100% {
+        transform: scale(1);
+        border: 3px solid white;
+    }
+}
+
+@keyframes card-unhover {
+    0% {
+    }
+}
