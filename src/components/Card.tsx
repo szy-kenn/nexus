@@ -13,10 +13,12 @@ const Card = ({ image_url, title, price }: Props) => {
 
     const handleMouseEnter = () => {
         mainCardContainer.current?.classList.add("hovered");
+        mainCardContainer.current?.classList.remove("unhovered");
     };
 
     const handleMouseLeave = () => {
         mainCardContainer.current?.classList.remove("hovered");
+        mainCardContainer.current?.classList.add("unhovered");
     };
 
     return (

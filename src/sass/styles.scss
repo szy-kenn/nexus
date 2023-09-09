@@ -45,12 +45,21 @@ $bg-color: #191919;
 .card-main-container {
     display: flex;
     position: relative;
+    border: 3px solid rgba(white, 0);
     border-radius: 20px;
     height: 12.5rem;
     width: 17.5em;
 
     &.hovered {
         animation: card-hover 0.2s ease forwards;
+
+        .card {
+            border: 2px solid $bg-color;
+        }
+
+        .heart-btn {
+            opacity: 1;
+        }
 
         .card::after {
             content: "";
@@ -68,7 +77,15 @@ $bg-color: #191919;
     }
 
     &.unhovered {
-        animation: card-unhover 0.2s ease-out forwards;
+        animation: card-unhover 0.2s ease forwards;
+
+        .card {
+            border: none;
+        }
+
+        .heart-btn {
+            opacity: 0;
+        }
     }
 
     .card {
@@ -77,7 +94,6 @@ $bg-color: #191919;
         align-items: center;
         justify-content: flex-end;
         position: relative;
-        border: 2px solid $bg-color;
         border-radius: 20px;
         height: 100%;
         width: 100%;
@@ -106,6 +122,7 @@ $bg-color: #191919;
             height: 12.5%;
             width: 15%;
             padding: none;
+            transition: opacity 0.1s ease;
 
             .heart-svg {
                 position: relative;
