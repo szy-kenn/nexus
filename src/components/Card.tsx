@@ -1,6 +1,5 @@
 import React from "react";
-import { useRef } from "react";
-import MainContainer from "./MainContainer";
+import { useRef, useEffect } from "react";
 
 interface Props {
     image_url: string;
@@ -20,6 +19,10 @@ const Card = ({ image_url, title, price }: Props) => {
         mainCardContainer.current?.classList.remove("hovered");
         mainCardContainer.current?.classList.add("unhovered");
     };
+
+    useEffect(() => {
+        mainCardContainer.current?.classList.add("unhovered");
+    }, []);
 
     return (
         <div
@@ -41,12 +44,8 @@ const Card = ({ image_url, title, price }: Props) => {
                     </svg>
                 </button>
                 <div className="card-info-container">
-                    <div className="card-main-info">
-                        <h1 className="card-title">{title}</h1>
-                        <p className="card-price">{price}</p>
-                    </div>
-
-                    <button className="play-btn">Play</button>
+                    <h1 className="card-title">{title}</h1>
+                    <p className="card-price">{price}</p>
                 </div>
             </div>
         </div>
