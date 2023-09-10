@@ -77,6 +77,24 @@ const data: GameData[] = [
         clickedColor: "#272f2e",
         imageUrl: "src/assets/the-last-of-us.jpg",
     },
+    {
+        title: "Farlight 84",
+        price: "Free",
+        clickedColor: "#deb040",
+        imageUrl: "src/assets/farlight.jpg",
+    },
+    {
+        title: "Counter Strike: Global Offensive",
+        price: "Free",
+        clickedColor: "#8e8677",
+        imageUrl: "src/assets/csgo.jpg",
+    },
+    {
+        title: "Honkai Impact 3rd",
+        price: "Free",
+        clickedColor: "#e78e29",
+        imageUrl: "src/assets/honkai-impact-3rd.jpg",
+    },
 ];
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
