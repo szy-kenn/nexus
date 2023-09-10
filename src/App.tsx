@@ -1,16 +1,33 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Sidebar from "@components/Sidebar";
 import SearchBar from "@components/SearchBar";
 import Card from "@components/Card";
-import hexToRgb from "global";
+import Header from "@components/Header";
+import { hexToRgb, GameData } from "global.ts";
+import Popup from "@components/Popup";
 
-const App = () => {
+interface Props {
+    data: GameData[];
+}
+
+const App = ({ data }: Props) => {
     const [gradientTheme, setGradientTheme] = useState(hexToRgb("#111111"));
     const [className, setClassName] = useState("wrapper");
+    const [searchText, setSearchText] = useState("");
+    const [clickedCard, setClickedCard] = useState<GameData>();
+    const [popupClassName, setPopupClassName] = useState("popup-card-clicked");
 
-    // useEffect(() => {
-    //     console.log(`rgba(${gradientTheme.join(", ")}, 1)`);
-    // }, [gradientTheme]);
+    const mainContainerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        mainContainerRef.current?.classList.toggle("darken");
+
+        if (mainContainerRef.current?.classList.contains("darken")) {
+            setPopupClassName("popup-card-clicked displayed");
+        } else {
+            setPopupClassName("popup-card-clicked");
+        }
+    }, [clickedCard]);
 
     useEffect(() => {
         const [r, g, b] = hexToRgb("#111111");
@@ -34,31 +51,38 @@ const App = () => {
                 } as React.CSSProperties
             }
         >
+            <Popup
+                clickedCard={clickedCard}
+                onClickedCard={setClickedCard}
+                popupClassName={popupClassName}
+            />
             <Sidebar />
-            <div className="main">
-                <SearchBar />
+            <div className="main" ref={mainContainerRef}>
+                <SearchBar
+                    searchText={searchText}
+                    onSearchChange={setSearchText}
+                />
+                <Header
+                    title="Popular Games"
+                    subtitle="Check our these titles!"
+                />
+
                 <div className="cards-container">
-                    <Card
-                        image_url="src/assets/league-of-legends.jpg"
-                        title="League of Legends"
-                        price="Free"
-                        clickedColor={"#0397AB"}
-                        onCardSelect={setGradientTheme}
-                    />
-                    <Card
-                        image_url="src/assets/valorant.jpg"
-                        title="Valorant"
-                        price="Free"
-                        clickedColor={"#fd4556"}
-                        onCardSelect={setGradientTheme}
-                    />
-                    <Card
-                        image_url="src/assets/genshin-impact.jpg"
-                        title="Genshin Impact"
-                        price="Free"
-                        clickedColor={"#1455b4"}
-                        onCardSelect={setGradientTheme}
-                    />
+                    {data
+                        .filter((game) =>
+                            game.title.toLowerCase().includes(searchText.trim())
+                        )
+                        .map((game, idx) => (
+                            <Card
+                                key={idx}
+                                imageUrl={game.imageUrl}
+                                title={game.title}
+                                price={game.price}
+                                clickedColor={game.clickedColor}
+                                onCardHover={setGradientTheme}
+                                onCardClick={setClickedCard}
+                            />
+                        ))}
                 </div>
             </div>
         </div>

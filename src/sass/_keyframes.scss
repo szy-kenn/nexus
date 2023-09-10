@@ -35,3 +35,32 @@
         border: 3px solid rgba(white, 0);
     }
 }
+
+@keyframes popup {
+    0% {
+        top: calc(50% - 1px);
+        height: 5px;
+        width: 50%;
+    }
+
+    75% {
+        top: calc(50% - 1px);
+        height: 5px;
+        width: 100%;
+        transform: scale(1);
+    }
+
+    100% {
+        top: 12.5%;
+        height: 75%;
+        width: 100%;
+        transform: scale(1);
+    }
+
+    // 100% {
+    //     top: 12.5%;
+    //     height: 75dvh;
+    //     width: 100%;
+    //     transform: scale(1);
+    // }
+}

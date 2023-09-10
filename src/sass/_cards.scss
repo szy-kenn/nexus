@@ -1,0 +1,154 @@
+@use "variables" as *;
+
+.cards-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    height: 100%;
+    width: 100%;
+    gap: 1rem;
+    overflow-y: scroll;
+    padding: 1rem;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.card-main-container {
+    display: flex;
+    position: relative;
+    border: 3px solid rgba(white, 0);
+    border-radius: 20px;
+    height: 12.5rem;
+    width: 20em;
+    --card-color: white;
+    overflow: visible;
+
+    &.hovered {
+        animation: card-hover 0.2s ease forwards;
+        box-shadow: 0 0 10px 1px rgba(var(--card-color, white), 0.4);
+
+        .card {
+            border: 2px solid $bg-color;
+        }
+
+        .heart-btn {
+            opacity: 1;
+        }
+
+        .card-info-container {
+            flex-direction: row;
+        }
+
+        .card-title {
+            font-size: 1.5em;
+        }
+
+        .card::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -1;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease;
+            border-radius: 20px;
+        }
+    }
+
+    &.unhovered {
+        animation: card-unhover 0.2s ease forwards;
+
+        .card {
+            border: none;
+        }
+
+        .heart-btn {
+            opacity: 0;
+        }
+
+        .card-info-container {
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1em;
+        }
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+        border-radius: 20px;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 1);
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            scale: 1.25;
+            object-fit: cover;
+            object-position: 50% 50%;
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .heart-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            outline: none;
+            border: none;
+            height: 12.5%;
+            width: 15%;
+            padding: none;
+            transition: opacity 0.1s ease;
+
+            .heart-svg {
+                position: relative;
+                height: 100%;
+                width: 100%;
+                fill: white;
+            }
+        }
+
+        .card-info-container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 1rem;
+            gap: 0.5rem;
+            position: relative;
+            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            border-radius: 0 0 20px 20px;
+
+            .card-title {
+                color: white;
+                font-family: $main-font;
+                position: relative;
+                transition: all 0.1s ease;
+            }
+
+            .card-price {
+                color: white;
+                font-size: 0.8em;
+                font-family: $main-font;
+            }
+        }
+    }
+}

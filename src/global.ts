@@ -1,4 +1,4 @@
-const hexToRgb = (hex: string) => {
+export const hexToRgb = (hex: string) => {
     // Remove the # character if it's present
     hex = hex.replace(/^#/, "");
 
@@ -19,4 +19,9 @@ const hexToRgb = (hex: string) => {
     return [r, g, b];
 };
 
-export default hexToRgb;
+export interface GameData {
+    title: string;
+    price: string;
+    clickedColor: string;
+    imageUrl: string;
+}

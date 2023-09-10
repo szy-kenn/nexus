@@ -1,37 +1,39 @@
 import { useRef, useEffect } from "react";
-import hexToRgb from "global";
+import { GameData, hexToRgb } from "global.ts";
 
 interface Props {
-    image_url: string;
+    imageUrl: string;
     title: string;
     price: string;
     clickedColor: string;
-    onCardSelect: React.Dispatch<React.SetStateAction<number[]>>;
+    onCardHover: React.Dispatch<React.SetStateAction<number[]>>;
+    onCardClick: React.Dispatch<React.SetStateAction<GameData | undefined>>;
 }
 
 const Card = ({
-    image_url,
+    imageUrl,
     title,
     price,
     clickedColor,
-    onCardSelect,
+    onCardHover,
+    onCardClick,
 }: Props) => {
     const mainCardContainer = useRef<HTMLDivElement>(null);
 
     const handleMouseEnter = () => {
-        onCardSelect(hexToRgb(clickedColor));
+        onCardHover(hexToRgb(clickedColor));
         mainCardContainer.current?.classList.add("hovered");
         mainCardContainer.current?.classList.remove("unhovered");
     };
 
     const handleMouseLeave = () => {
-        onCardSelect(hexToRgb("#111111"));
+        onCardHover(hexToRgb("#111111"));
         mainCardContainer.current?.classList.remove("hovered");
         mainCardContainer.current?.classList.add("unhovered");
     };
 
     const handleClick = () => {
-        console.log("click");
+        onCardClick({ title, price, clickedColor, imageUrl });
     };
 
     useEffect(() => {
@@ -52,7 +54,7 @@ const Card = ({
             }
         >
             <div className="card">
-                <img src={image_url} alt={title} loading="lazy" />
+                <img src={imageUrl} alt={title} loading="lazy" />
                 <button className="heart-btn">
                     {/* <!--! Font Awesome Pro 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
                     <svg
