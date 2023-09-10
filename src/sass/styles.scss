@@ -4,7 +4,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Crimson+Pro&family=Rubik);
 
 $main-font: "Rubik";
-$bg-color: #191919;
+$bg-color: #111111;
 * {
     font-family: $main-font;
 }
@@ -12,9 +12,34 @@ $bg-color: #191919;
 .wrapper {
     display: flex;
     position: relative;
-    // height: 100dvh;
-    // width: 100dvw;
-    background-color: $bg-color;
+    min-height: 100dvh;
+    min-width: 100dvw;
+    background: #111111;
+    z-index: 0;
+
+    &.hovered::after {
+        opacity: 100;
+        transition: all 1s ease;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(var(--gradient-color, (11, 11, 11)), 1) 100%
+        );
+        transition: all 1s ease;
+        filter: brightness(25%);
+        z-index: -1;
+        pointer-events: none;
+    }
 }
 
 .sidebar-container {
@@ -52,7 +77,7 @@ $bg-color: #191919;
 
     &.hovered {
         animation: card-hover 0.2s ease forwards;
-        box-shadow: 2px 26px 60px -4px rgba(white, 0.1);
+        box-shadow: 0 0 100px 20px rgba(var(--card-color, white), 0.35);
 
         .card {
             border: 2px solid $bg-color;
