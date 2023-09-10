@@ -56,7 +56,7 @@ const data: GameData[] = [
     {
         title: "Undertale",
         price: "$10.00",
-        clickedColor: "#ffffff",
+        clickedColor: "#dddddd",
         imageUrl: "src/assets/undertale.jpg",
     },
     {

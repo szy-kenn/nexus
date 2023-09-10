@@ -79,19 +79,58 @@
     height: 0;
     width: 0;
     box-sizing: border-box;
-    background: var(--card-color);
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 0) 0%,
+        var(--card-color) 50%
+    );
     z-index: 999;
+    box-shadow: 0px 20px 75px -19px rgba(0, 0, 0, 0.75);
 
     .content-container {
         display: flex;
+        justify-content: flex-start;
+        // align-items: center;
         opacity: 0;
-        padding: 1rem;
+        // padding: 1rem;
         transition: opacity 0s linear 0s;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(
+                270deg,
+                var(--card-color) 50%,
+                rgba(0, 0, 0, 0) 100%
+            );
+            z-index: 1;
+            pointer-events: none;
+        }
 
         svg {
-            position: relative;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
             height: 36px;
             fill: white;
+        }
+
+        img {
+            position: relative;
+            size: 100%;
+            filter: saturate(120%);
+        }
+
+        .card-info {
+            border: 1px solid red;
         }
     }
 
