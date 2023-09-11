@@ -19,7 +19,9 @@ const App = ({ data }: Props) => {
 
     const mainContainerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
+    const handleClickedCard = (clickedCardVal: GameData | undefined) => {
+        setClickedCard(clickedCardVal);
+
         mainContainerRef.current?.classList.toggle("darken");
 
         if (mainContainerRef.current?.classList.contains("darken")) {
@@ -27,7 +29,9 @@ const App = ({ data }: Props) => {
         } else {
             setPopupClassName("popup-card-clicked");
         }
-    }, [clickedCard]);
+    };
+
+    // useEffect(() => {}, [clickedCard]);
 
     useEffect(() => {
         const [r, g, b] = hexToRgb("#111111");
@@ -53,7 +57,7 @@ const App = ({ data }: Props) => {
         >
             <Popup
                 clickedCard={clickedCard}
-                onClickedCard={setClickedCard}
+                onClickedCard={handleClickedCard}
                 popupClassName={popupClassName}
             />
             <Sidebar />
@@ -93,7 +97,7 @@ const App = ({ data }: Props) => {
                                 price={game.price}
                                 clickedColor={game.clickedColor}
                                 onCardHover={setGradientTheme}
-                                onCardClick={setClickedCard}
+                                onCardClick={handleClickedCard}
                             />
                         ))}
                 </div>

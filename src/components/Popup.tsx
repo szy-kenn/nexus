@@ -3,7 +3,7 @@ import { GameData } from "global";
 
 interface Props {
     clickedCard: GameData | undefined;
-    onClickedCard: React.Dispatch<React.SetStateAction<GameData | undefined>>;
+    onClickedCard: (clickedCardVal: GameData | undefined) => void;
     popupClassName: string;
 }
 

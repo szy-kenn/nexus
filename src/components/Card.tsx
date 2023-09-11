@@ -7,7 +7,7 @@ interface Props {
     price: string;
     clickedColor: string;
     onCardHover: React.Dispatch<React.SetStateAction<number[]>>;
-    onCardClick: React.Dispatch<React.SetStateAction<GameData | undefined>>;
+    onCardClick: (clickedCardVal: GameData | undefined) => void;
 }
 
 const Card = ({
