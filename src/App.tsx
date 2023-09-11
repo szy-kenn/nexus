@@ -81,7 +81,7 @@ const App = ({ data }: Props) => {
                 />
                 <Header
                     title="Popular Games"
-                    subtitle="Check our these titles!"
+                    subtitle="Check out these titles!"
                 />
 
                 <div className="cards-container">

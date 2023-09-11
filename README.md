@@ -42,10 +42,6 @@ and open the website on `localhost:5173`
 
 ![Responsive On Click (Phone)](assets/5.png)
 
--   Responsive (Tablet)
+-   And ofc a working search bar
 
-![Responsive (Tablet)](assets/6.png)
-
--   Responsive On Click (Tablet)
-
-![Responsive On Click (Tablet)](assets/7.png)
+![Working Search Bar](assets/6.png)
