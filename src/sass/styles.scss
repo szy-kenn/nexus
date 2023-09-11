@@ -135,11 +135,11 @@
     }
 
     &.displayed {
-        animation: popup 0.5s linear forwards;
+        animation: popup 0.3s linear forwards;
 
         .content-container {
             opacity: 1;
-            transition: opacity 0s linear 0.5s;
+            transition: opacity 0s linear 0.2s;
         }
     }
 }
