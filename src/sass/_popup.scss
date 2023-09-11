@@ -1,0 +1,101 @@
+@use "variables" as *;
+
+.popup-card-clicked {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    top: calc(12.5dvh);
+    left: 0;
+    transform: scale(0);
+    height: 0;
+    width: 0;
+    box-sizing: border-box;
+    background-color: var(--card-color);
+    z-index: 999;
+    box-shadow: 0px 20px 75px -19px rgba(0, 0, 0, 0.75);
+
+    .content-container {
+        display: flex;
+        justify-content: flex-start;
+        opacity: 0;
+        transition: opacity 0s linear 0s;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+
+        svg {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            height: 36px;
+            fill: white;
+            z-index: 999;
+        }
+
+        .popup-image-container {
+            position: relative;
+            max-height: 100%;
+            max-width: 50%;
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                background: linear-gradient(
+                    90deg,
+                    var(--card-color) 0%,
+                    rgba(0, 0, 0, 0) 100%
+                );
+                z-index: 1;
+                pointer-events: none;
+            }
+
+            img {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                max-width: 100%;
+                object-fit: cover;
+                filter: saturate(120%);
+            }
+        }
+
+        .card-info {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding: 1rem;
+            justify-content: flex-start;
+            gap: 0.5rem;
+            width: 50%;
+            max-width: 50%;
+            color: white;
+            font-family: $main-font;
+
+            &-title {
+                font-size: 1.5em;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &.displayed {
+        animation: popup 0.3s linear forwards;
+
+        .content-container {
+            opacity: 1;
+            transition: opacity 0s linear 0.2s;
+        }
+    }
+}

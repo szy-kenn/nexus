@@ -1,7 +1,7 @@
 import React from "react";
 import App from "./App";
 import ReactDOM from "react-dom/client";
-import "./sass/styles.scss";
+import "sass/index.scss";
 import { GameData } from "global.ts";
 
 const data: GameData[] = [

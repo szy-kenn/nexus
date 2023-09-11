@@ -3,10 +3,13 @@
 .cards-container {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(clamp(15rem, 20vw, 20vw), 1fr)
+    );
     // height: 100%;
     width: 100%;
-    gap: 1rem;
+    gap: clamp(1rem, 1.5rem, 2rem);
     overflow-y: scroll;
     padding: 1rem;
 
@@ -31,8 +34,8 @@
     position: relative;
     border: 3px solid rgba(white, 0);
     border-radius: 20px;
-    height: 7.5rem;
-    width: 20em;
+    height: clamp(7.5rem, 10dvw, 10dvw);
+    width: 100%;
     --card-color: white;
     overflow: visible;
 

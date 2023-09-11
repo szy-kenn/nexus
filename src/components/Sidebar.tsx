@@ -1,6 +1,6 @@
 import React from "react";
 
-const Sidebar = () => {
+const Sidebar = ({}) => {
     return (
         <div className="sidebar-container">
             <h1 className="sidebar-header">Sidebar Header</h1>

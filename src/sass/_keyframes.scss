@@ -1,3 +1,5 @@
+@use "variables";
+
 @keyframes card-hover {
     0% {
         transform: scale(1);
@@ -51,17 +53,10 @@
     }
 
     100% {
-        top: 25%;
-        height: 50%;
-        max-height: 50%;
+        top: calc(50% - (var(--popup-max-height) / 2));
+        height: var(--popup-max-height);
+        max-height: var(--popup-max-height);
         width: 100%;
         transform: scale(1);
     }
-
-    // 100% {
-    //     top: 12.5%;
-    //     height: 75dvh;
-    //     width: 100%;
-    //     transform: scale(1);
-    // }
 }

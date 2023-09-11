@@ -1,0 +1,51 @@
+@use "variables";
+
+@media screen and (max-width: 767px) {
+    .sidebar-container {
+        display: none;
+    }
+
+    .cards-container {
+        grid-template-columns: repeat(
+            auto-fill,
+            minmax(clamp(15rem, 17.5vw, 17.5vw), 1fr)
+        );
+    }
+
+    .card-main-container {
+        height: 10rem;
+    }
+}
+
+@media screen and (max-width: 467px) {
+    :root {
+        --popup-max-height: 80%;
+    }
+
+    .popup-card-clicked {
+        .content-container {
+            flex-direction: column;
+
+            .popup-image-container {
+                width: 100%;
+                max-width: 100%;
+                order: -1;
+
+                &::after {
+                    background: linear-gradient(
+                        0deg,
+                        var(--card-color) 0%,
+                        rgba(0, 0, 0, 0) 100%
+                    );
+                }
+            }
+
+            .card-info {
+                height: 50%;
+                max-height: 50%;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }
+}
