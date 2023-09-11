@@ -1,14 +1,14 @@
-# nexus
+# Nexus
 
-### About
+## About
 
 A website containing some popular games, smooth searching, and some fun animations using React + TypeScript in Vite.
 
-### Deployed on Firebase
+## Deployed on Firebase
 
 Visit the website [here!](https://szy-kenn-nexus.web.app)
 
-### Running on Local Machine
+## Running on Local Machine
 
 To run on your local machine, run the following commands:
 
