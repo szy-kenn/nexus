@@ -1,6 +1,12 @@
 @use "variables";
 
 @media screen and (max-width: 767px) {
+    * {
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
     .sidebar-container {
         display: none;
     }

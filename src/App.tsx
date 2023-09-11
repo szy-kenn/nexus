@@ -58,6 +58,19 @@ const App = ({ data }: Props) => {
             />
             <Sidebar />
             <div className="main" ref={mainContainerRef}>
+                <p className="title">
+                    ne
+                    <span
+                        style={{
+                            fontSize: "0.85em",
+                            fontWeight: 300,
+                            textAlign: "center",
+                        }}
+                    >
+                        {"<x>"}
+                    </span>
+                    us
+                </p>
                 <SearchBar
                     searchText={searchText}
                     onSearchChange={setSearchText}

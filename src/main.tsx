@@ -25,7 +25,7 @@ const data: GameData[] = [
     },
     {
         title: "Starfield",
-        price: "$18.99",
+        price: "$69.99",
         clickedColor: "#304c7a",
         imageUrl: "src/assets/starfield.jpg",
     },
@@ -37,7 +37,7 @@ const data: GameData[] = [
     },
     {
         title: "Grand Theft Auto 5",
-        price: "$14.49",
+        price: "$14.99",
         clickedColor: "#61B5CB",
         imageUrl: "src/assets/gta-5.jpg",
     },
@@ -55,7 +55,7 @@ const data: GameData[] = [
     },
     {
         title: "Undertale",
-        price: "$10.00",
+        price: "$9.99",
         clickedColor: "#dddddd",
         imageUrl: "src/assets/undertale.jpg",
     },
@@ -67,13 +67,13 @@ const data: GameData[] = [
     },
     {
         title: "Red Dead Redemption 2",
-        price: "$14.49",
+        price: "$11.54",
         clickedColor: "#cb0512",
         imageUrl: "src/assets/red-dead-redemption-2.jpg",
     },
     {
         title: "The Last Of Us",
-        price: "$21.49",
+        price: "$19.99",
         clickedColor: "#272f2e",
         imageUrl: "src/assets/the-last-of-us.jpg",
     },

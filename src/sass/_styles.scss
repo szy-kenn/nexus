@@ -56,10 +56,23 @@ img {
     flex-direction: column;
     position: relative;
     flex: 85;
-    gap: 2rem;
+    gap: 1.5rem;
 
     &.darken {
         filter: brightness(25%);
+    }
+
+    .title {
+        padding-top: 0.5rem;
+        font-size: 1.75em;
+        color: white;
+        font-family: $main-font;
+        font-weight: 300;
+        // text-transform: uppercase;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: -0.1em;
     }
 }
 
