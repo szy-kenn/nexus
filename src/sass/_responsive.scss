@@ -29,6 +29,8 @@
             .popup-image-container {
                 width: 100%;
                 max-width: 100%;
+                height: auto;
+                max-height: 50%;
                 order: -1;
 
                 &::after {
@@ -41,8 +43,7 @@
             }
 
             .card-info {
-                height: 50%;
-                max-height: 50%;
+                flex-grow: 1;
                 width: 100%;
                 max-width: 100%;
             }

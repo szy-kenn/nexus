@@ -1,8 +1,42 @@
+@use "variables" as *;
+
 .sidebar-container {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
     position: relative;
     min-height: 100dvh;
     flex: 15;
     border-right: 1px solid rgba(white, 0.05);
+    color: white;
+    font-family: $main-font;
+
+    .title {
+        display: flex;
+        font-size: 1.5em;
+        font-weight: bold;
+        text-transform: uppercase;
+        justify-content: center;
+        height: 3rem;
+        align-items: center;
+        padding-right: 1rem;
+    }
+
+    .sidebar-contents {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .sidebar-header {
+            font-size: 1em;
+            font-weight: 500;
+        }
+
+        .category {
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }

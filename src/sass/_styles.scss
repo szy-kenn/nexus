@@ -7,14 +7,21 @@
     font-family: $main-font;
 }
 
+img {
+    user-select: none;
+}
+
 .wrapper {
     display: flex;
     position: relative;
+    min-height: 100dvh;
     max-height: 100dvh;
     max-width: 100dvw;
     overflow: hidden;
     background: #111111;
     z-index: 0;
+    padding: 1rem;
+    gap: 2rem;
 
     &.hovered::after {
         opacity: 100;
@@ -49,7 +56,6 @@
     flex-direction: column;
     position: relative;
     flex: 85;
-    padding: 2rem;
     gap: 2rem;
 
     &.darken {
