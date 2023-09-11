@@ -13,3 +13,5 @@ git clone https://github.com/szy-kenn/nexus.git
 cd nexus
 npm run dev
 ```
+
+and open the website on `localhost:5173`
