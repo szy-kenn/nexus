@@ -30,7 +30,7 @@ and open the website on `localhost:5173`
 
 ![On Hover](assets/2.png)
 
--   On Click
+-   On Click (can't think of anything to put here TT)
 
 ![On Click](assets/3.png)
 
