@@ -5,6 +5,7 @@ import Card from "@components/Card";
 import Header from "@components/Header";
 import { hexToRgb, GameData } from "global.ts";
 import Popup from "@components/Popup";
+import Navbar from "@components/Navbar";
 
 interface Props {
     data: GameData[];
@@ -30,8 +31,6 @@ const App = ({ data }: Props) => {
             setPopupClassName("popup-card-clicked");
         }
     };
-
-    // useEffect(() => {}, [clickedCard]);
 
     useEffect(() => {
         const [r, g, b] = hexToRgb("#111111");
@@ -62,19 +61,7 @@ const App = ({ data }: Props) => {
             />
             <Sidebar />
             <div className="main" ref={mainContainerRef}>
-                <p className="title">
-                    ne
-                    <span
-                        style={{
-                            fontSize: "0.85em",
-                            fontWeight: 300,
-                            textAlign: "center",
-                        }}
-                    >
-                        {"<x>"}
-                    </span>
-                    us
-                </p>
+                <Navbar />
                 <SearchBar
                     searchText={searchText}
                     onSearchChange={setSearchText}

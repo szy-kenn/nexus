@@ -46,6 +46,8 @@ const Card = ({
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
+            onFocus={handleMouseEnter}
+            onBlur={handleMouseLeave}
             ref={mainCardContainer}
             style={
                 {
