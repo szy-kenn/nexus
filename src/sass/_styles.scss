@@ -61,19 +61,6 @@ img {
     &.darken {
         filter: brightness(25%);
     }
-
-    .title {
-        padding-top: 0.5rem;
-        font-size: 1.75em;
-        color: white;
-        font-family: $main-font;
-        font-weight: 300;
-        // text-transform: uppercase;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        letter-spacing: -0.1em;
-    }
 }
 
 .header-container {
@@ -165,5 +152,40 @@ img {
 }
 
 .navbar {
+    position: relative;
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3rem;
+    width: 100%;
+    padding-inline: 1rem;
+
+    .hamburger {
+        height: 60%;
+        flex: 2;
+    }
+
+    .question-mark {
+        height: 45%;
+        flex: 2;
+    }
+
+    .title {
+        font-size: 1.75em;
+        color: white;
+        font-family: $main-font;
+        font-weight: 300;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        letter-spacing: -0.1em;
+        flex: 98;
+    }
+}
+
+.hamburger,
+.question-mark {
+    position: relative;
+    height: 100%;
+    fill: white;
 }
