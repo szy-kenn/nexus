@@ -10,7 +10,7 @@ export default defineConfig({
         host: true,
         proxy: {
             "/api": {
-                target: "http://localhost:3000",
+                target: "http://127.0.0.1:3000",
                 secure: false,
                 configure: (proxy, _options) => {
                     proxy.on("error", (err, _req, _res) => {

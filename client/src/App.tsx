@@ -8,17 +8,25 @@ import { RGBColor, GameData } from "lib/types";
 import Popup from "@components/Popup";
 import Navbar from "@components/Navbar";
 import { DEFAULT_THEME } from "lib/constants";
+import Spinner from "@components/Spinner";
 
-interface Props {
-    data: GameData[];
+interface FetchedData {
+    status: number;
+    statusText: string;
+    response: GameData[];
 }
 
-const App = ({ data }: Props) => {
+const App = () => {
     const [gradientTheme, setGradientTheme] = useState<RGBColor>(
         hexToRgb(DEFAULT_THEME)
     );
     const [searchText, setSearchText] = useState("");
     const [clickedCard, setClickedCard] = useState<GameData>();
+    const [fetchedData, setFetchedData] = useState<FetchedData>({
+        status: 0,
+        statusText: "",
+        response: [],
+    });
 
     const mainContainerRef = useRef<HTMLDivElement>(null);
 
@@ -27,6 +35,52 @@ const App = ({ data }: Props) => {
 
         mainContainerRef.current?.classList.toggle("darken");
     };
+
+    const showFetchedData = () => {
+        if (fetchedData.status === 0) {
+            return <Spinner />;
+        } else if (fetchedData.status === 200) {
+            return (
+                <div className="cards-container">
+                    {fetchedData.response
+                        .filter((game) =>
+                            game.title.toLowerCase().includes(searchText.trim())
+                        )
+                        .map((game, idx) => (
+                            <Card
+                                key={idx}
+                                imageUrl={game.imageUrl}
+                                title={game.title}
+                                price={game.price}
+                                clickedColor={game.clickedColor}
+                                onCardHover={setGradientTheme}
+                                onCardClick={handleClickedCard}
+                            />
+                        ))}
+                </div>
+            );
+        } else {
+            return <p className="fetch-error">{fetchedData.statusText}</p>;
+        }
+    };
+
+    useEffect(() => {
+        fetch("/api")
+            .then((res) => {
+                setFetchedData((prev) => ({
+                    ...prev,
+                    status: res.status,
+                    statusText: res.statusText,
+                }));
+                return res.json();
+            })
+            .then((data) => {
+                setFetchedData((prev) => ({ ...prev, response: data }));
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }, []);
 
     return (
         <div
@@ -64,24 +118,7 @@ const App = ({ data }: Props) => {
                     title="Popular Games"
                     subtitle="Check out these titles!"
                 />
-
-                <div className="cards-container">
-                    {data
-                        .filter((game) =>
-                            game.title.toLowerCase().includes(searchText.trim())
-                        )
-                        .map((game, idx) => (
-                            <Card
-                                key={idx}
-                                imageUrl={game.imageUrl}
-                                title={game.title}
-                                price={game.price}
-                                clickedColor={game.clickedColor}
-                                onCardHover={setGradientTheme}
-                                onCardClick={handleClickedCard}
-                            />
-                        ))}
-                </div>
+                {showFetchedData()}
             </div>
         </div>
     );
