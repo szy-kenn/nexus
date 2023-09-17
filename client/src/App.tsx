@@ -1,20 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import Sidebar from "@components/Sidebar";
 import SearchBar from "@components/SearchBar";
-import Card from "@components/Card";
 import Header from "@components/Header";
 import { hexToRgb, compareRgb } from "lib/global";
-import { RGBColor, GameData } from "lib/types";
+import { RGBColor, GameData, FetchedData } from "lib/types";
 import Popup from "@components/Popup";
 import Navbar from "@components/Navbar";
 import { DEFAULT_THEME } from "lib/constants";
 import Spinner from "@components/Spinner";
-
-interface FetchedData {
-    status: number;
-    statusText: string;
-    response: GameData[];
-}
+import CardContainer from "@components/CardContainer";
 
 const App = () => {
     const [gradientTheme, setGradientTheme] = useState<RGBColor>(
@@ -41,27 +35,16 @@ const App = () => {
             return <Spinner />;
         } else if (fetchedData.status === 200) {
             return (
-                <div className="cards-container">
-                    {fetchedData.response
-                        .filter((game) =>
-                            game.title.toLowerCase().includes(searchText.trim())
-                        )
-                        .map((game, idx) => (
-                            <Card
-                                key={idx}
-                                imageUrl={game.imageUrl}
-                                title={game.title}
-                                price={game.price}
-                                clickedColor={game.clickedColor}
-                                onCardHover={setGradientTheme}
-                                onCardClick={handleClickedCard}
-                            />
-                        ))}
-                </div>
+                <CardContainer
+                    fetchedData={fetchedData}
+                    searchText={searchText}
+                    handleCardHover={setGradientTheme}
+                    handleClickedCard={handleClickedCard}
+                />
             );
-        } else {
-            return <p className="fetch-error">{fetchedData.statusText}</p>;
         }
+
+        return <p className="fetch-error">{fetchedData.statusText}</p>;
     };
 
     useEffect(() => {

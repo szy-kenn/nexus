@@ -10,3 +10,9 @@ export interface RGBColor {
     g: number;
     b: number;
 }
+
+export interface FetchedData {
+    status: number;
+    statusText: string;
+    response: GameData[];
+}

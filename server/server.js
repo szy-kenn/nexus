@@ -96,7 +96,7 @@ const data = [
     },
 ];
 
-app.get("/api", (req, res) => {
+app.get("/api", (_req, res) => {
     res.send(data);
 });
 
