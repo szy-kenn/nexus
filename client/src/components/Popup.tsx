@@ -1,5 +1,5 @@
 import React from "react";
-import { GameData } from "global";
+import { GameData } from "lib/types";
 
 interface Props {
     clickedCard: GameData | undefined;

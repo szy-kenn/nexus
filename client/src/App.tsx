@@ -3,9 +3,11 @@ import Sidebar from "@components/Sidebar";
 import SearchBar from "@components/SearchBar";
 import Card from "@components/Card";
 import Header from "@components/Header";
-import { hexToRgb, compareRgb, RGBColor, GameData } from "global.ts";
+import { hexToRgb, compareRgb } from "lib/global";
+import { RGBColor, GameData } from "lib/types";
 import Popup from "@components/Popup";
 import Navbar from "@components/Navbar";
+import { DEFAULT_THEME } from "lib/constants";
 
 interface Props {
     data: GameData[];
@@ -13,7 +15,7 @@ interface Props {
 
 const App = ({ data }: Props) => {
     const [gradientTheme, setGradientTheme] = useState<RGBColor>(
-        hexToRgb("#111111")
+        hexToRgb(DEFAULT_THEME)
     );
     const [searchText, setSearchText] = useState("");
     const [clickedCard, setClickedCard] = useState<GameData>();
@@ -30,7 +32,7 @@ const App = ({ data }: Props) => {
         <div
             className={
                 "wrapper " +
-                (compareRgb(gradientTheme, hexToRgb("#111111"))
+                (compareRgb(gradientTheme, hexToRgb(DEFAULT_THEME))
                     ? ""
                     : "hovered")
             }

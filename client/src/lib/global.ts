@@ -1,3 +1,5 @@
+import { RGBColor } from "./types";
+
 export const hexToRgb = (hex: string): RGBColor => {
     // Remove the # character if it's present
     hex = hex.replace(/^#/, "");
@@ -24,16 +26,3 @@ export const compareRgb = (color1: RGBColor, color2: RGBColor) => {
         color1.r === color2.r && color1.b === color2.b && color1.g === color2.g
     );
 };
-
-export interface GameData {
-    title: string;
-    price: string;
-    clickedColor: string;
-    imageUrl: string;
-}
-
-export interface RGBColor {
-    r: number;
-    g: number;
-    b: number;
-}

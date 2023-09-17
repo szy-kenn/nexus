@@ -1,5 +1,6 @@
 import { useRef, useEffect } from "react";
-import { GameData, hexToRgb, RGBColor } from "global.ts";
+import { hexToRgb } from "lib/global";
+import { GameData, RGBColor } from "lib/types";
 
 interface Props {
     imageUrl: string;
