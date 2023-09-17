@@ -1,4 +1,4 @@
-export const hexToRgb = (hex: string) => {
+export const hexToRgb = (hex: string): RGBColor => {
     // Remove the # character if it's present
     hex = hex.replace(/^#/, "");
 
@@ -16,7 +16,13 @@ export const hexToRgb = (hex: string) => {
     const b = parseInt(hex.substring(4, 6), 16);
 
     // Return the RGB color as an object
-    return [r, g, b];
+    return { r, g, b };
+};
+
+export const compareRgb = (color1: RGBColor, color2: RGBColor) => {
+    return (
+        color1.r === color2.r && color1.b === color2.b && color1.g === color2.g
+    );
 };
 
 export interface GameData {
@@ -24,4 +30,10 @@ export interface GameData {
     price: string;
     clickedColor: string;
     imageUrl: string;
+}
+
+export interface RGBColor {
+    r: number;
+    g: number;
+    b: number;
 }

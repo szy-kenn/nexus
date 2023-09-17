@@ -1,12 +1,12 @@
 import { useRef, useEffect } from "react";
-import { GameData, hexToRgb } from "global.ts";
+import { GameData, hexToRgb, RGBColor } from "global.ts";
 
 interface Props {
     imageUrl: string;
     title: string;
     price: string;
     clickedColor: string;
-    onCardHover: React.Dispatch<React.SetStateAction<number[]>>;
+    onCardHover: React.Dispatch<React.SetStateAction<RGBColor>>;
     onCardClick: (clickedCardVal: GameData | undefined) => void;
 }
 

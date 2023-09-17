@@ -97,6 +97,10 @@ const data: GameData[] = [
     },
 ];
 
+fetch("/api")
+    .then((res) => res.json())
+    .then((data) => console.log(data));
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <App data={data} />

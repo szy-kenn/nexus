@@ -3,7 +3,7 @@ import Sidebar from "@components/Sidebar";
 import SearchBar from "@components/SearchBar";
 import Card from "@components/Card";
 import Header from "@components/Header";
-import { hexToRgb, GameData } from "global.ts";
+import { hexToRgb, compareRgb, RGBColor, GameData } from "global.ts";
 import Popup from "@components/Popup";
 import Navbar from "@components/Navbar";
 
@@ -12,52 +12,44 @@ interface Props {
 }
 
 const App = ({ data }: Props) => {
-    const [gradientTheme, setGradientTheme] = useState(hexToRgb("#111111"));
-    const [className, setClassName] = useState("wrapper");
+    const [gradientTheme, setGradientTheme] = useState<RGBColor>(
+        hexToRgb("#111111")
+    );
     const [searchText, setSearchText] = useState("");
     const [clickedCard, setClickedCard] = useState<GameData>();
-    const [popupClassName, setPopupClassName] = useState("popup-card-clicked");
 
     const mainContainerRef = useRef<HTMLDivElement>(null);
 
-    const handleClickedCard = (clickedCardVal: GameData | undefined) => {
-        setClickedCard(clickedCardVal);
+    const handleClickedCard = (card: GameData | undefined) => {
+        setClickedCard(card);
 
         mainContainerRef.current?.classList.toggle("darken");
-
-        if (mainContainerRef.current?.classList.contains("darken")) {
-            setPopupClassName("popup-card-clicked displayed");
-        } else {
-            setPopupClassName("popup-card-clicked");
-        }
     };
-
-    useEffect(() => {
-        const [r, g, b] = hexToRgb("#111111");
-        if (
-            gradientTheme[0] !== r &&
-            gradientTheme[1] !== g &&
-            gradientTheme[2] !== b
-        ) {
-            setClassName("wrapper hovered");
-        } else {
-            setClassName("wrapper");
-        }
-    }, [gradientTheme]);
 
     return (
         <div
-            className={className}
+            className={
+                "wrapper " +
+                (compareRgb(gradientTheme, hexToRgb("#111111"))
+                    ? ""
+                    : "hovered")
+            }
             style={
                 {
-                    "--gradient-color": `${gradientTheme}`,
+                    "--gradient-color": [
+                        gradientTheme.r,
+                        gradientTheme.g,
+                        gradientTheme.b,
+                    ],
                 } as React.CSSProperties
             }
         >
             <Popup
                 clickedCard={clickedCard}
                 onClickedCard={handleClickedCard}
-                popupClassName={popupClassName}
+                popupClassName={
+                    "popup-card-clicked " + (clickedCard ? " displayed" : "")
+                }
             />
             <Sidebar />
             <div className="main" ref={mainContainerRef}>
