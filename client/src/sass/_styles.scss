@@ -160,14 +160,10 @@ img {
     width: 100%;
     padding-inline: 1rem;
 
+    .question-mark,
     .hamburger {
-        height: 60%;
-        flex: 2;
-    }
-
-    .question-mark {
         height: 45%;
-        flex: 2;
+        flex: 10;
     }
 
     .title {
@@ -186,7 +182,6 @@ img {
 .hamburger,
 .question-mark {
     position: relative;
-    height: 100%;
     fill: white;
 }
 

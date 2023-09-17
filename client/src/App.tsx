@@ -27,7 +27,13 @@ const App = () => {
     const handleClickedCard = (card: GameData | undefined) => {
         setClickedCard(card);
 
-        mainContainerRef.current?.classList.toggle("darken");
+        console.log(card);
+
+        if (card === undefined) {
+            mainContainerRef.current?.classList.remove("darken");
+        } else {
+            mainContainerRef.current?.classList.add("darken");
+        }
     };
 
     const showFetchedData = () => {
