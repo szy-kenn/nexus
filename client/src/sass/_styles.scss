@@ -162,8 +162,15 @@ img {
 
     .question-mark,
     .hamburger {
-        height: 45%;
-        flex: 10;
+        height: 50%;
+    }
+
+    .question-mark {
+        justify-self: flex-end;
+    }
+
+    .hamburger {
+        justify-self: flex-start;
     }
 
     .title {

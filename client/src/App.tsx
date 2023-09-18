@@ -27,8 +27,7 @@ const App = () => {
     const handleClickedCard = (card: GameData | undefined) => {
         setClickedCard(card);
 
-        console.log(card);
-
+        // the wrapper should be darkened if a card is currently active, else remove the darken class
         if (card === undefined) {
             mainContainerRef.current?.classList.remove("darken");
         } else {

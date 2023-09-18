@@ -53,7 +53,7 @@
     }
 
     100% {
-        top: calc(50% - (var(--popup-max-height) / 2));
+        top: calc(40% - (var(--popup-max-height) / 2));
         height: var(--popup-max-height);
         max-height: var(--popup-max-height);
         width: 100%;
