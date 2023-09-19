@@ -3,7 +3,8 @@ import Sidebar from "@components/Sidebar";
 import SearchBar from "@components/SearchBar";
 import Header from "@components/Header";
 import { hexToRgb, compareRgb } from "lib/global";
-import { RGBColor, GameData, FetchedData } from "lib/types";
+import { RGBColor, FetchedData } from "lib/types";
+import IAnimeSchema from "@backend/IAnimeSchema";
 import Popup from "@components/Popup";
 import Navbar from "@components/Navbar";
 import { DEFAULT_THEME } from "lib/constants";
@@ -15,7 +16,7 @@ const App = () => {
         hexToRgb(DEFAULT_THEME)
     );
     const [searchText, setSearchText] = useState("");
-    const [clickedCard, setClickedCard] = useState<GameData>();
+    const [clickedCard, setClickedCard] = useState<IAnimeSchema>();
     const [fetchedData, setFetchedData] = useState<FetchedData>({
         status: 0,
         statusText: "",
@@ -24,7 +25,7 @@ const App = () => {
 
     const mainContainerRef = useRef<HTMLDivElement>(null);
 
-    const handleClickedCard = (card: GameData | undefined) => {
+    const handleClickedCard = (card: IAnimeSchema | undefined) => {
         setClickedCard(card);
 
         // the wrapper should be darkened if a card is currently active, else remove the darken class
@@ -39,6 +40,10 @@ const App = () => {
         if (fetchedData.status === 0) {
             return <Spinner />;
         } else if (fetchedData.status === 200) {
+            if (fetchedData.response.length === 0) {
+                return <p className="fetch-error"> Empty Data Fetched.</p>;
+            }
+
             return (
                 <CardContainer
                     fetchedData={fetchedData}

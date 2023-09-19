@@ -1,9 +1,9 @@
 import React from "react";
-import { GameData } from "lib/types";
+import IAnimeSchema from "@backend/IAnimeSchema";
 
 interface Props {
-    clickedCard: GameData | undefined;
-    onClickedCard: (clickedCardVal: GameData | undefined) => void;
+    clickedCard: IAnimeSchema | undefined;
+    onClickedCard: (clickedCardVal: IAnimeSchema | undefined) => void;
     popupClassName: string;
 }
 
@@ -32,7 +32,7 @@ const Popup = ({ clickedCard, onClickedCard, popupClassName }: Props) => {
                 </svg>
                 <div className="card-info">
                     <p className="card-info-title">{clickedCard?.title}</p>
-                    <p className="card-info-price">{clickedCard?.price}</p>
+                    <p className="card-info-price">{clickedCard?.episodes}</p>
                 </div>
                 <div className="popup-image-container">
                     <img

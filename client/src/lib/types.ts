@@ -1,3 +1,5 @@
+import IAnimeSchema from "@backend/IAnimeSchema";
+
 export interface GameData {
     title: string;
     price: string;
@@ -14,5 +16,5 @@ export interface RGBColor {
 export interface FetchedData {
     status: number;
     statusText: string;
-    response: GameData[];
+    response: IAnimeSchema[];
 }

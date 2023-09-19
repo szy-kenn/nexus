@@ -8,6 +8,7 @@
     "baseUrl": "src",
     "paths": {
         "@components/*": ["./components/*"],
+        "@backend/*": ["../../server/types/*"]
     },
 
     /* Bundler mode */

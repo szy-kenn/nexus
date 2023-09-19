@@ -1,28 +1,19 @@
 import { useRef, useEffect } from "react";
 import { hexToRgb } from "lib/global";
-import { GameData, RGBColor } from "lib/types";
+import { RGBColor } from "lib/types";
+import IAnimeSchema from "@backend/IAnimeSchema";
 
 interface Props {
-    imageUrl: string;
-    title: string;
-    price: string;
-    clickedColor: string;
+    animeData: IAnimeSchema;
     onCardHover: React.Dispatch<React.SetStateAction<RGBColor>>;
-    onCardClick: (clickedCardVal: GameData | undefined) => void;
+    onCardClick: (clickedCardVal: IAnimeSchema | undefined) => void;
 }
 
-const Card = ({
-    imageUrl,
-    title,
-    price,
-    clickedColor,
-    onCardHover,
-    onCardClick,
-}: Props) => {
+const Card = ({ animeData, onCardHover, onCardClick }: Props) => {
     const mainCardContainer = useRef<HTMLDivElement>(null);
 
     const handleMouseEnter = () => {
-        onCardHover(hexToRgb(clickedColor));
+        onCardHover(hexToRgb(animeData.clickedColor));
         mainCardContainer.current?.classList.add("hovered");
         mainCardContainer.current?.classList.remove("unhovered");
     };
@@ -34,7 +25,7 @@ const Card = ({
     };
 
     const handleClick = () => {
-        onCardClick({ title, price, clickedColor, imageUrl });
+        onCardClick(animeData);
     };
 
     useEffect(() => {
@@ -52,12 +43,16 @@ const Card = ({
             ref={mainCardContainer}
             style={
                 {
-                    "--card-color": `${hexToRgb(clickedColor)}`,
+                    "--card-color": `${hexToRgb(animeData.clickedColor)}`,
                 } as React.CSSProperties
             }
         >
             <div className="card">
-                <img src={imageUrl} alt={title} loading="lazy" />
+                <img
+                    src={animeData.imageUrl}
+                    alt={animeData.title}
+                    loading="lazy"
+                />
                 <button className="heart-btn">
                     {/* <!--! Font Awesome Pro 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
                     <svg
@@ -69,8 +64,8 @@ const Card = ({
                     </svg>
                 </button>
                 <div className="card-info-container">
-                    <h1 className="card-title">{title}</h1>
-                    <p className="card-price">{price}</p>
+                    <h1 className="card-title">{animeData.title}</h1>
+                    <p className="card-episodes">{animeData.episodes}</p>
                 </div>
             </div>
         </div>

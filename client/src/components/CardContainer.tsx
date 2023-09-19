@@ -1,11 +1,12 @@
-import { FetchedData, GameData, RGBColor } from "lib/types";
+import { FetchedData, RGBColor } from "lib/types";
+import IAnimeSchema from "@backend/IAnimeSchema";
 import Card from "./Card";
 
 interface Props {
     fetchedData: FetchedData;
     searchText: string;
     handleCardHover: React.Dispatch<React.SetStateAction<RGBColor>>;
-    handleClickedCard: (card: GameData | undefined) => void;
+    handleClickedCard: (card: IAnimeSchema | undefined) => void;
 }
 
 const CardContainer = ({
@@ -17,16 +18,13 @@ const CardContainer = ({
     return (
         <div className="cards-container">
             {fetchedData.response
-                .filter((game) =>
-                    game.title.toLowerCase().includes(searchText.trim())
+                .filter((anime) =>
+                    anime.title.toLowerCase().includes(searchText.trim())
                 )
-                .map((game, idx) => (
+                .map((anime, idx) => (
                     <Card
                         key={idx}
-                        imageUrl={game.imageUrl}
-                        title={game.title}
-                        price={game.price}
-                        clickedColor={game.clickedColor}
+                        animeData={anime}
                         onCardHover={handleCardHover}
                         onCardClick={handleClickedCard}
                     />
