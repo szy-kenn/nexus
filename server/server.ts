@@ -1,7 +1,19 @@
+import mongoose from "mongoose";
+
+const dotenv = require("dotenv");
+dotenv.config();
+
 const express = require("express");
 const app = express();
 
-const PORT = 3000;
+if (process.env.DATABASE_URL) {
+    mongoose
+        .connect(process.env.DATABASE_URL)
+        .then(() => console.log("Connected to MongoDB Database"))
+        .catch((error) => console.error(error));
+} else {
+    console.error("Database URL is not defined in the process environment");
+}
 
 const data = [
     {
@@ -96,10 +108,12 @@ const data = [
     },
 ];
 
-app.get("/api", (_req, res) => {
-    res.send(data);
-});
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-    console.log(`Listening at http:localhost:${PORT}`);
-});
+// middleware
+app.use(express.json());
+
+import router from "./routers/api";
+app.use("/api", router);
+
+app.listen(PORT, () => console.log(`Listening at http:localhost:${PORT}`));
