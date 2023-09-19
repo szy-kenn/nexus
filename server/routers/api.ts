@@ -8,16 +8,24 @@ const router = Router();
 async function add() {
     try {
         const user: HydratedDocument<IAnimeSchema> = new Anime({
-            title: 5,
-            imageUrl: "dsada",
-            clickedColor: "sadsad",
-            studio: "std",
+            title: "Steins;Gate",
+            imageUrl: "/assets/steins-gate.jpg",
+            clickedColor: "#3f405f",
+            studio: "White Fox",
             type: "TV",
             airingDate: {
-                startDate: new Date(),
-                endDate: new Date(),
+                startDate: (() => {
+                    const date = new Date();
+                    date.setFullYear(2011, 4, 6);
+                    return date;
+                })(),
+                endDate: (() => {
+                    const date = new Date();
+                    date.setFullYear(2011, 9, 14);
+                    return date;
+                })(),
             },
-            episodes: 5,
+            episodes: 24,
         });
         await user.save();
         console.log(user);
@@ -27,6 +35,14 @@ async function add() {
         }
     }
 }
+
+// add();
+
+async function del() {
+    await Anime.deleteMany();
+}
+
+// del();
 
 router.get("/", async (_req: Request, res: Response) => {
     try {

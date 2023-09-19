@@ -65,7 +65,7 @@ const Card = ({ animeData, onCardHover, onCardClick }: Props) => {
                 </button>
                 <div className="card-info-container">
                     <h1 className="card-title">{animeData.title}</h1>
-                    <p className="card-episodes">{animeData.episodes}</p>
+                    <p className="card-price">{animeData.episodes} eps</p>
                 </div>
             </div>
         </div>

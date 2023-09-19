@@ -1,4 +1,5 @@
 export default interface IAnimeSchema {
+    _id: string;
     title: string;
     episodes: number;
     type: string;
